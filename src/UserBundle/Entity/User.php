@@ -18,6 +18,11 @@ class User extends BaseUser
      */
     protected $id;
 
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
+
     public function __construct()
     {
         parent::__construct();
