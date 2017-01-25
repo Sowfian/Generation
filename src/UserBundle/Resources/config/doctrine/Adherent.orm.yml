@@ -35,4 +35,11 @@ UserBundle\Entity\Adherent:
         telephone:
             type: string
             length: 255
+
+    manyToMany:
+            groupe:
+                targetEntity: Groupe
+                joinColumn:
+                    name: groupe_id
+                    referencedColumnName: id
     lifecycleCallbacks: {  }

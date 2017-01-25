@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class AdherentType extends AbstractType
@@ -24,7 +25,12 @@ class AdherentType extends AbstractType
             ->add('ville')
             ->add('departement')
             ->add('email')
-            ->add('telephone');
+            ->add('telephone')
+            ->add('groupe', EntityType::class, array(
+                'class' => 'UserBundle:Groupe',
+                'choice_label' => 'nom',
+                'multiple' => true, ));
+        ;
     }
     
     /**

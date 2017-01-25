@@ -36,7 +36,7 @@ class AdherentController extends Controller
         $adherent = new Adherent();
         $form = $this->createForm('UserBundle\Form\AdherentType', $adherent);
         $form->handleRequest($request);
-
+        var_dump($form->getData());
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($adherent);

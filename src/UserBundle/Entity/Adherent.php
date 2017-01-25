@@ -57,6 +57,12 @@ class Adherent
      */
     private $telephone;
 
+    /**
+     * @var array
+     */
+    private $groupe;
+
+
 
     /**
      * Get id
@@ -283,5 +289,23 @@ class Adherent
     {
         return $this->telephone;
     }
+
+    /**
+     * @return array
+     */
+    public function getGroupe()
+    {
+        return $this->groupe;
+    }
+
+    /**
+     * @param array $groupe
+     */
+    public function setGroupe($groupe)
+    {
+        $this->groupe = $groupe;
+    }
+
+
 }
 
