@@ -1,0 +1,38 @@
+UserBundle\Entity\Adherent:
+    type: entity
+    table: null
+    repositoryClass: UserBundle\Repository\AdherentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prenom:
+            type: string
+            length: 255
+        dateNaissance:
+            type: date
+            column: date_naissance
+        adresse:
+            type: text
+        codePostal:
+            type: integer
+            column: code_postal
+        ville:
+            type: string
+            length: 255
+        departement:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        telephone:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

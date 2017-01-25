@@ -1,0 +1,54 @@
+
+{% block body %}
+    <h1>Adherents list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Datenaissance</th>
+                <th>Adresse</th>
+                <th>Codepostal</th>
+                <th>Ville</th>
+                <th>Departement</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adherent in adherents %}
+            <tr>
+                <td><a href="{{ path('adherent_show', { 'id': adherent.id }) }}">{{ adherent.id }}</a></td>
+                <td>{{ adherent.nom }}</td>
+                <td>{{ adherent.prenom }}</td>
+                <td>{% if adherent.dateNaissance %}{{ adherent.dateNaissance|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ adherent.adresse }}</td>
+                <td>{{ adherent.codePostal }}</td>
+                <td>{{ adherent.ville }}</td>
+                <td>{{ adherent.departement }}</td>
+                <td>{{ adherent.email }}</td>
+                <td>{{ adherent.telephone }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('adherent_show', { 'id': adherent.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('adherent_edit', { 'id': adherent.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adherent_new') }}">Create a new adherent</a>
+        </li>
+    </ul>
+{% endblock %}

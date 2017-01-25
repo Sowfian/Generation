@@ -1,3 +1,7 @@
+user_adherent:
+    resource: "@UserBundle/Resources/config/routing/adherent.yml"
+    prefix:   /adherent
+
 user_homepage:
     path:     /dashboard
     defaults: { _controller: UserBundle:Dashboard:index }
