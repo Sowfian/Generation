@@ -1,20 +1,34 @@
+<html>
+<head>
+    {% include 'base.html.twig' %}
+</head>
+<body class="with-side-menu control-panel control-panel-compact">
+{% include 'menu.html.twig' %}
+<div class="page-content">
+    <div class="container-fluid">
+        <header class="section-header">
+            <div class="tbl">
+                <div class="tbl-row">
+                    <div class="tbl-cell">
+                        <h3>Modifier l'adhérent {{ adherent.id }}</h3>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-{% block body %}
-    <h1>Adherent edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('adherent_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+        <div class="box-typical box-typical-padding">
+            <form>
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input type="submit" class="btn" value="Modifier" />
+                {{ form_end(edit_form) }}
+            </form>
+        </div><!--.box-typical-->
+        {{ form_start(delete_form) }}
+        <input style="float: right" type="submit" class="btn" value="Supprimer l'adhérent">
+        {{ form_end(delete_form) }}
+    </div><!--.container-fluid-->
+</div>
+{% include 'footer.html.twig' %}
+</body>
+</html>

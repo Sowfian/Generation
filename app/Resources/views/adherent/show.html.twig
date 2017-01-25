@@ -1,63 +1,42 @@
+<html>
+<head>
+    {% include 'base.html.twig' %}
+</head>
+<body class="with-side-menu control-panel control-panel-compact">
+{% include 'menu.html.twig' %}
 
-{% block body %}
-    <h1>Adherent</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ adherent.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ adherent.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ adherent.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Datenaissance</th>
-                <td>{% if adherent.dateNaissance %}{{ adherent.dateNaissance|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ adherent.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Codepostal</th>
-                <td>{{ adherent.codePostal }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ adherent.ville }}</td>
-            </tr>
-            <tr>
-                <th>Departement</th>
-                <td>{{ adherent.departement }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ adherent.email }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ adherent.telephone }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('adherent_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('adherent_edit', { 'id': adherent.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-lg-pull-12 col-md-12 col-sm-12">
+                <section class="box-typical" style="text-align: center">
+                    <div class="profile-card">
+                        <div class="profile-card-photo" style="margin-top: 20px;">
+                            <img src="{{ asset('theme/img/logo-2.png')}}" alt="">
+                        </div>
+                        <br>
+                        <div class="profile-card-name">Nom: <b>{{ adherent.nom }}</b></div>
+                        <div class="profile-card-status">Prénom: <b>{{ adherent.prenom }}</b></div>
+                        <div class="profile-card-location">Date de naissance: <b>{{ adherent.dateNaissance|date('d-m-Y') }}</b></div>
+                        <br>
+                        <div class="profile-card-location">Adresse: <b>{{ adherent.adresse }}</b></div>
+                        <div class="profile-card-location">Code postal: <b>{{ adherent.codePostal }}</b></div>
+                        <div class="profile-card-location">Ville: <b>{{ adherent.ville }}</b></div>
+                        <div class="profile-card-location">Département: <b>{{ adherent.departement }}</b></div>
+                        <br>
+                        <div class="profile-card-location">Email: <b>{{ adherent.email }}</b></div>
+                        <div class="profile-card-location">Téléphon: <b>{{ adherent.telephone }}</b></div>
+                        <a href="mailto:{{ adherent.email }}"><button type="button" style="margin-top: 30px;" class="btn btn-rounded">Envoyer un email</button></a>
+                        {{ form_start(delete_form) }}
+                        <input style="margin-top: 10px;" type="submit" class="btn" value="Supprimer l'adhérent">
+                        {{ form_end(delete_form) }}
+                    </div><!--.profile-card-->
+                    <br>
+                </section><!--.box-typical-->
+            </div><!--.col- -->
+        </div><!--.row-->
+    </div>
+</div>
+{% include 'footer.html.twig' %}
+</body>
+</html>

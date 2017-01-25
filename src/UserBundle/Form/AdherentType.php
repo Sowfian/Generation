@@ -5,6 +5,8 @@ namespace UserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+
 
 class AdherentType extends AbstractType
 {
@@ -13,7 +15,16 @@ class AdherentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('dateNaissance')->add('adresse')->add('codePostal')->add('ville')->add('departement')->add('email')->add('telephone')        ;
+        $builder
+            ->add('nom')
+            ->add('prenom')
+            ->add('dateNaissance', BirthdayType::class)
+            ->add('adresse')
+            ->add('codePostal')
+            ->add('ville')
+            ->add('departement')
+            ->add('email')
+            ->add('telephone');
     }
     
     /**
