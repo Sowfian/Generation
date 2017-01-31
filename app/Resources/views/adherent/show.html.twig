@@ -26,12 +26,21 @@
                         <br>
                         <div class="profile-card-location">Email: <b>{{ adherent.email }}</b></div>
                         <div class="profile-card-location">Téléphon: <b>{{ adherent.telephone }}</b></div>
-                        <p>Groupes inscrit :</p>
+                        <br>
+                        <p>Jours inscrit :</p>
                         {% for groupe in groupes %}
-                        <p>{{  groupe.nom }}</p>
+                            <b>{{ groupe.nom }}</b><br>
                         {% endfor %}
                         <a href="mailto:{{ adherent.email }}"><button type="button" style="margin-top: 30px;" class="btn btn-rounded">Envoyer un email</button></a>
                         {{ form_start(delete_form) }}
+                        <a href="{{ path('adherent_edit', { 'id': adherent.id }) }}">
+                            <button type="button" class="btn" style="float: none;margin-top: 10px;">
+                                Modifier l'adhérent
+                            </button>
+                        </a>
+                        <br>
+
+
                         <input style="margin-top: 10px;" type="submit" class="btn" value="Supprimer l'adhérent">
                         {{ form_end(delete_form) }}
                     </div><!--.profile-card-->

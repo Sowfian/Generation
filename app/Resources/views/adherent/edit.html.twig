@@ -17,12 +17,10 @@
         </header>
 
         <div class="box-typical box-typical-padding">
-            <form>
                 {{ form_start(edit_form) }}
                 {{ form_widget(edit_form) }}
-                <input type="submit" class="btn" value="Modifier" />
+
                 {{ form_end(edit_form) }}
-            </form>
         </div><!--.box-typical-->
         {{ form_start(delete_form) }}
         <input style="float: right" type="submit" class="btn" value="Supprimer l'adhérent">
