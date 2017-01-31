@@ -36,7 +36,7 @@ class AdherentController extends Controller
         $adherent = new Adherent();
         $form = $this->createForm('UserBundle\Form\AdherentType', $adherent);
         $form->handleRequest($request);
-        var_dump($form->getData());
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($adherent);
@@ -58,10 +58,11 @@ class AdherentController extends Controller
     public function showAction(Adherent $adherent)
     {
         $deleteForm = $this->createDeleteForm($adherent);
-
+        $groupes = $adherent->getGroupe()->getValues();
         return $this->render('adherent/show.html.twig', array(
             'adherent' => $adherent,
             'delete_form' => $deleteForm->createView(),
+            'groupes' => $groupes,
         ));
     }
 

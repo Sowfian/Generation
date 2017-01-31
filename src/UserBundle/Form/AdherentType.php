@@ -3,6 +3,7 @@
 namespace UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
@@ -29,8 +30,8 @@ class AdherentType extends AbstractType
             ->add('groupe', EntityType::class, array(
                 'class' => 'UserBundle:Groupe',
                 'choice_label' => 'nom',
-                'multiple' => true, ));
-        ;
+                'multiple' => true, ))
+            ->add('save', SubmitType::class, array('label' => 'Créer'));
     }
     
     /**
