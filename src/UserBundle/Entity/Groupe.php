@@ -10,12 +10,12 @@ class Groupe
     /**
      * @var int
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      */
-    private $nom;
+    public $nom;
 
 
     /**
@@ -50,6 +50,17 @@ class Groupe
     public function getNom()
     {
         return $this->nom;
+    }
+
+
+    /**
+     * Convert object to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }
 

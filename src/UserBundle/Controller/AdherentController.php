@@ -3,6 +3,7 @@
 namespace UserBundle\Controller;
 
 use UserBundle\Entity\Adherent;
+use UserBundle\Entity\Groupe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -21,7 +22,6 @@ class AdherentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $adherents = $em->getRepository('UserBundle:Adherent')->findAll();
-
         return $this->render('adherent/index.html.twig', array(
             'adherents' => $adherents,
         ));

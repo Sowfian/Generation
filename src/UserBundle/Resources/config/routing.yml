@@ -9,3 +9,7 @@ user_homepage:
 user_groupe:
         resource: "@UserBundle/Resources/config/routing/groupe.yml"
         prefix:   /groupe
+
+user_message:
+    path:     /message
+    defaults: { _controller: UserBundle:Message:index }

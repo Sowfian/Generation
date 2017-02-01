@@ -1,39 +1,55 @@
-{% extends 'base.html.twig' %}
+<html>
+<head>
+    {% include 'base.html.twig' %}
+</head>
+<body class="with-side-menu control-panel control-panel-compact">
+{% include 'menu.html.twig' %}
 
-{% block body %}
-    <h1>Groupes list</h1>
-
-    <table>
-        <thead>
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="col-md-6 col-lg-6 col-xs-6 col-xl-6" style="float: left">
+            <h1>Liste des groupes</h1>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xs-6 col-xl-6" style="float: right">
+            <a href="{{path ('adherent_new')}}">
+                <button class="btn">Ajouter un groupe</button>
+            </a>
+        </div>
+        <table id="table-edit" class="table table-bordered table-hover">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Actions</th>
+                <th style="text-align: center">Id</th>
+                <th style="text-align: center">Nom</th>
+                <th style="text-align: center">Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for groupe in groupes %}
-            <tr>
-                <td><a href="{{ path('groupe_show', { 'id': groupe.id }) }}">{{ groupe.id }}</a></td>
-                <td>{{ groupe.nom }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('groupe_show', { 'id': groupe.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('groupe_edit', { 'id': groupe.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for groupe in groupes %}
+                <tr style="text-align: center">
+                    <td>{{ groupe.id }}</td>
+                    <td>{{ groupe.nom }}</td>
+                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                            <div class="btn-group btn-group-sm" style="float: none;">
+                                <a href="{{ path('groupe_show', { 'id': groupe.id }) }}">
+                                    <button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;">
+                                        <span class="glyphicon glyphicon-arrow-right"></span>
+                                    </button>
+                                </a>
+                                <a href="{{ path('groupe_edit', { 'id': groupe.id }) }}">
+                                    <button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </div><!--.container-fluid-->
+</div><!--.page-content-->
 
-    <ul>
-        <li>
-            <a href="{{ path('groupe_new') }}">Create a new groupe</a>
-        </li>
-    </ul>
-{% endblock %}
+{% include 'footer.html.twig' %}
+</body>
+</html>
