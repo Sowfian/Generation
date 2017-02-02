@@ -10,4 +10,7 @@ namespace UserBundle\Repository;
  */
 class GroupeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAdherents($groupeId) {
+        $this->findBy(array( 'groupe' => 1));
+    }
 }

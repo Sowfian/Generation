@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="row">
-                            <h2>Envoyer un message à un groupe</h2>
-                            {% for group in groups %}
-                            <a href="/message/{{ group.id }}">{{ group.nom }}</a>
-                            {% endfor %}
+                            <h2>Message pour le groupe {{ groupe.nom }} à {{ nbAdherents }} personne(s).</h2>
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            {{ form_end(form) }}
                         </div><!--.row-->
                     </div><!--.col-->
                 </div><!--.row-->

@@ -19,6 +19,12 @@ class Groupe
 
 
     /**
+     * @var array
+     */
+    public $adherents;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -62,5 +68,45 @@ class Groupe
     {
         return $this->getNom();
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->adherents = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add adherent
+     *
+     * @param \UserBundle\Entity\Adherent $adherent
+     *
+     * @return Groupe
+     */
+    public function addAdherent(\UserBundle\Entity\Adherent $adherent)
+    {
+        $this->adherents[] = $adherent;
+
+        return $this;
+    }
+
+    /**
+     * Remove adherent
+     *
+     * @param \UserBundle\Entity\Adherent $adherent
+     */
+    public function removeAdherent(\UserBundle\Entity\Adherent $adherent)
+    {
+        $this->adherents->removeElement($adherent);
+    }
+
+    /**
+     * Get adherents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAdherents()
+    {
+        return $this->adherents;
+    }
+}

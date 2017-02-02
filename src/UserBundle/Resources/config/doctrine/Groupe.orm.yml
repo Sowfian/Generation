@@ -15,3 +15,7 @@ UserBundle\Entity\Groupe:
 
 
     lifecycleCallbacks: {  }
+    manyToMany:
+        adherents:
+            targetEntity: Adherent
+            mappedBy: groupe

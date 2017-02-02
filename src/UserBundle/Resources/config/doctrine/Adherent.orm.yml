@@ -39,7 +39,11 @@ UserBundle\Entity\Adherent:
     manyToMany:
             groupe:
                 targetEntity: Groupe
+                inversedBy: adherents
                 joinColumn:
                     name: groupe_id
+                    referencedColumnName: id
+                inverseJoinColumns:
+                    name: adherent_id
                     referencedColumnName: id
     lifecycleCallbacks: {  }

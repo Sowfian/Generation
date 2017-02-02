@@ -11,5 +11,5 @@ user_groupe:
         prefix:   /groupe
 
 user_message:
-    path:     /message
-    defaults: { _controller: UserBundle:Message:index }
+        resource: "@UserBundle/Resources/config/routing/message.yml"
+        prefix:   /message

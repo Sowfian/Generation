@@ -307,5 +307,35 @@ class Adherent
     }
 
 
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->groupe = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add groupe
+     *
+     * @param \UserBundle\Entity\Groupe $groupe
+     *
+     * @return Adherent
+     */
+    public function addGroupe(\UserBundle\Entity\Groupe $groupe)
+    {
+        $this->groupe[] = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupe
+     *
+     * @param \UserBundle\Entity\Groupe $groupe
+     */
+    public function removeGroupe(\UserBundle\Entity\Groupe $groupe)
+    {
+        $this->groupe->removeElement($groupe);
+    }
+}
