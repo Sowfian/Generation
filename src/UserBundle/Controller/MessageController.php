@@ -16,19 +16,18 @@ class MessageController extends Controller
                 'class' => 'UserBundle:Groupe',
                 'choice_label' => 'nom',
                 'multiple' => true, ))
-            ->add('sujet', TextType::class)
+            ->add('body', TextType::class)
             ->getForm();
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Une personne est intéressé par votre annonce')
-                ->setFrom(array('monbonhlmmtp@gmail.com' => "MonbonHLM"))
-                ->setTo($annonce->getAuteur()->getEmailCanonical())
+                ->setSubject('Informations GENERATION PAUL VALÉRY')
+                ->setFrom(array('monbonhlmmtp@gmail.com' => "GÉNÉRATION PAUL VALERY"))
+                ->setTo($groupe)
                 ->setCharset('utf-8')
                 ->setContentType('text/html')
-                ->setBody($this->renderView('MonbonHLMHomeBundle:Message:messageauteur.html.twig',
-                    array('adherant' => $adherant,)));
+                ->setBody($body);
 
             $this->get('mailer')->send($message);
 
