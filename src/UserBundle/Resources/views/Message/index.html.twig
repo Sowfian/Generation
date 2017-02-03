@@ -1,0 +1,33 @@
+    <html>
+    <head>
+        {% include 'base.html.twig' %}
+    </head>
+    <body class="with-side-menu control-panel control-panel-compact">
+        {% include 'menu.html.twig' %}
+
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <h2>Envoyer un message à un groupe</h2>
+                            {% for group in groups %}
+                                <div class="col-sm-6">
+                                    <a href="/message/{{ group.id }}">
+                                        <article class="statistic-box green">
+                                            <div>
+                                                <div class="number">{{ group.nom }}</div>
+                                            </div>
+                                        </article>
+                                    </a>
+                                </div><!--.col-->
+                            {% endfor %}
+                        </div><!--.row-->
+                    </div><!--.col-->
+                </div><!--.row-->
+
+            </div><!--.container-fluid-->
+        </div>
+        {% include 'footer.html.twig' %}
+    </body>
+</html>

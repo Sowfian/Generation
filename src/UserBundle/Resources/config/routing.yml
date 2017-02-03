@@ -1,0 +1,15 @@
+user_adherent:
+    resource: "@UserBundle/Resources/config/routing/adherent.yml"
+    prefix:   /adherent
+
+user_homepage:
+    path:     /
+    defaults: { _controller: UserBundle:Dashboard:index }
+
+user_groupe:
+        resource: "@UserBundle/Resources/config/routing/groupe.yml"
+        prefix:   /groupe
+
+user_message:
+        resource: "@UserBundle/Resources/config/routing/message.yml"
+        prefix:   /message

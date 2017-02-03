@@ -1,0 +1,9 @@
+message_index:
+  path:     /
+  defaults: { _controller: "UserBundle:Message:index" }
+  methods:  GET
+
+message_compose:
+  path: /{id}
+  defaults: { _controller: "UserBundle:Message:compose" }
+  methods: [GET, POST]

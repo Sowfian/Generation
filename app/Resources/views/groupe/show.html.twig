@@ -1,0 +1,39 @@
+<html>
+<head>
+    {% include 'base.html.twig' %}
+</head>
+<body class="with-side-menu control-panel control-panel-compact">
+{% include 'menu.html.twig' %}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-lg-pull-12 col-md-12 col-sm-12">
+                <section class="box-typical" style="text-align: center">
+                    <div class="profile-card">
+                        <div class="profile-card-photo" style="margin-top: 20px;">
+                            <img src="{{ asset('theme/img/logo-2.png')}}" alt="">
+                        </div>
+                        <br>
+                        <div class="profile-card-name">Identifiant: <b>{{ groupe.id }}</b></div>
+                        <div class="profile-card-status">Nom: <b>{{ groupe.nom }}</b></div>
+                        {{ form_start(delete_form) }}
+                        <a href="{{ path('groupe_edit', { 'id': groupe.id }) }}">
+                            <button type="button" class="btn" style="float: none;margin-top: 10px;">
+                                Modifier le groupe
+                            </button>
+                        </a>
+                        <br>
+                        <input style="margin-top: 10px;" type="submit" class="btn" value="Supprimer le groupe">
+                        {{ form_end(delete_form) }}
+                    </div><!--.profile-card-->
+                    <br>
+                </section><!--.box-typical-->
+            </div><!--.col- -->
+        </div><!--.row-->
+    </div>
+</div>
+{% include 'footer.html.twig' %}
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+    <html>
+    <head>
+        {% include 'base.html.twig' %}
+    </head>
+    <body class="with-side-menu control-panel control-panel-compact">
+        {% include 'menu.html.twig' %}
+
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <h2>Message pour le groupe {{ groupe.nom }} à {{ nbAdherents }} personne(s).</h2>
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            {{ form_end(form) }}
+                        </div><!--.row-->
+                    </div><!--.col-->
+                </div><!--.row-->
+
+            </div><!--.container-fluid-->
+        </div>
+        {% include 'footer.html.twig' %}
+    </body>
+</html>

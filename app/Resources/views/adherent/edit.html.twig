@@ -1,0 +1,32 @@
+<html>
+<head>
+    {% include 'base.html.twig' %}
+</head>
+<body class="with-side-menu control-panel control-panel-compact">
+{% include 'menu.html.twig' %}
+<div class="page-content">
+    <div class="container-fluid">
+        <header class="section-header">
+            <div class="tbl">
+                <div class="tbl-row">
+                    <div class="tbl-cell">
+                        <h3>Modifier l'adhérent {{ adherent.id }}</h3>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="box-typical box-typical-padding">
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                
+                {{ form_end(edit_form) }}
+        </div><!--.box-typical-->
+        {{ form_start(delete_form) }}
+        <input style="float: right" type="submit" class="btn" value="Supprimer l'adhérent">
+        {{ form_end(delete_form) }}
+    </div><!--.container-fluid-->
+</div>
+{% include 'footer.html.twig' %}
+</body>
+</html>

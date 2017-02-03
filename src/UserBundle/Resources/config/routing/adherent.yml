@@ -1,0 +1,24 @@
+adherent_index:
+    path:     /
+    defaults: { _controller: "UserBundle:Adherent:index" }
+    methods:  GET
+
+adherent_show:
+    path:     /{id}/show
+    defaults: { _controller: "UserBundle:Adherent:show" }
+    methods:  GET
+
+adherent_new:
+    path:     /new
+    defaults: { _controller: "UserBundle:Adherent:new" }
+    methods:  [GET, POST]
+
+adherent_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UserBundle:Adherent:edit" }
+    methods:  [GET, POST]
+
+adherent_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UserBundle:Adherent:delete" }
+    methods:  DELETE

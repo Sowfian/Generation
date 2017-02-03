@@ -1,0 +1,55 @@
+<html>
+<head>
+    {% include 'base.html.twig' %}
+</head>
+<body class="with-side-menu control-panel control-panel-compact">
+{% include 'menu.html.twig' %}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-lg-pull-12 col-md-12 col-sm-12">
+                <section class="box-typical" style="text-align: center">
+                    <div class="profile-card">
+                        <div class="profile-card-photo" style="margin-top: 20px;">
+                            <img src="{{ asset('theme/img/logo-2.png')}}" alt="">
+                        </div>
+                        <br>
+                        <div class="profile-card-name">Nom: <b>{{ adherent.nom }}</b></div>
+                        <div class="profile-card-status">Prénom: <b>{{ adherent.prenom }}</b></div>
+                        <div class="profile-card-location">Date de naissance: <b>{{ adherent.dateNaissance|date('d-m-Y') }}</b></div>
+                        <br>
+                        <div class="profile-card-location">Adresse: <b>{{ adherent.adresse }}</b></div>
+                        <div class="profile-card-location">Code postal: <b>{{ adherent.codePostal }}</b></div>
+                        <div class="profile-card-location">Ville: <b>{{ adherent.ville }}</b></div>
+                        <div class="profile-card-location">Département: <b>{{ adherent.departement }}</b></div>
+                        <br>
+                        <div class="profile-card-location">Email: <b>{{ adherent.email }}</b></div>
+                        <div class="profile-card-location">Téléphon: <b>{{ adherent.telephone }}</b></div>
+                        <br>
+                        <p>Jours inscrit :</p>
+                        {% for groupe in groupes %}
+                            <b>{{ groupe.nom }}</b><br>
+                        {% endfor %}
+                        <a href="mailto:{{ adherent.email }}"><button type="button" style="margin-top: 30px;" class="btn btn-rounded">Envoyer un email</button></a>
+                        {{ form_start(delete_form) }}
+                        <a href="{{ path('adherent_edit', { 'id': adherent.id }) }}">
+                            <button type="button" class="btn" style="float: none;margin-top: 10px;">
+                                Modifier l'adhérent
+                            </button>
+                        </a>
+                        <br>
+
+
+                        <input style="margin-top: 10px;" type="submit" class="btn" value="Supprimer l'adhérent">
+                        {{ form_end(delete_form) }}
+                    </div><!--.profile-card-->
+                    <br>
+                </section><!--.box-typical-->
+            </div><!--.col- -->
+        </div><!--.row-->
+    </div>
+</div>
+{% include 'footer.html.twig' %}
+</body>
+</html>
