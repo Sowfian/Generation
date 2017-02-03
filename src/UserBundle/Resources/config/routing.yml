@@ -3,7 +3,7 @@ user_adherent:
     prefix:   /adherent
 
 user_homepage:
-    path:     /dashboard
+    path:     /
     defaults: { _controller: UserBundle:Dashboard:index }
 
 user_groupe:
