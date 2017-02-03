@@ -35,7 +35,9 @@
                 <td>{{ adherent.ville }}</td>
                 <td>{{ adherent.email }}</td>
                 <td>{{ adherent.telephone }}</td>
+                {% for groupe in groupes %}
                 <td>{{ groupe.nom }}</td>
+                {% endfor %}
                 <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
                         <div class="btn-group btn-group-sm" style="float: none;">
                             <a href="{{ path('adherent_show', { 'id': adherent.id }) }}">
