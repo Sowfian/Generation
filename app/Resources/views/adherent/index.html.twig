@@ -23,6 +23,7 @@
                 <th style="text-align: center">Ville</th>
                 <th style="text-align: center">Email</th>
                 <th style="text-align: center">Téléphone</th>
+                <th style="text-align: center">Jours inscrit</th>
                 <th style="text-align: center">Actions</th>
             </tr>
             </thead>
@@ -34,6 +35,7 @@
                 <td>{{ adherent.ville }}</td>
                 <td>{{ adherent.email }}</td>
                 <td>{{ adherent.telephone }}</td>
+                <td>{{ groupe.nom }}</td>
                 <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
                         <div class="btn-group btn-group-sm" style="float: none;">
                             <a href="{{ path('adherent_show', { 'id': adherent.id }) }}">

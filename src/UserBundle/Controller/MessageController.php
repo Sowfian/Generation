@@ -25,8 +25,8 @@ class MessageController extends Controller
     public function composeAction(Groupe $groupe, Request $request) {
 
         $data = array(
-            'sujet' => 'Le sujet du mail',
-            'message' => 'Votre message...');
+            'sujet' => 'Informations importante de GÉNÉRATION PAUL VALÉRY',
+            'message' => 'Il n\'y aura pas de cours aujourd\'hui');
 
         $form = $this->createFormBuilder($data)
             ->add('sujet', TextType::class)
@@ -41,13 +41,13 @@ class MessageController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             foreach ($adherents as $ad) {
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Une personne est intéressé par votre annonce')
-                    ->setFrom(array('monbonhlmmtp@gmail.com' => "MonbonHLM"))
+                    ->setSubject($form->get('sujet')->getData())
+                    ->setFrom(array('monbonhlmmtp@gmail.com' => "GENERATION PAUL VALERY"))
                     ->setTo($ad->getEmail())
                     ->setCharset('utf-8')
                     ->setContentType('text/html')
                    // ->setBody($this->renderView('UserBundle:Message:messageauteur.html.twig',
-                    ->setBody("Test Email !! Salut !!");
+                    ->setBody($form->get('message')->getData());
                 var_dump($this->get('swiftmailer.mailer')->send($message));
             }
 

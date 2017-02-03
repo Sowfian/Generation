@@ -12,7 +12,15 @@
                         <div class="row">
                             <h2>Envoyer un message à un groupe</h2>
                             {% for group in groups %}
-                            <a href="/message/{{ group.id }}">{{ group.nom }}</a>
+                                <div class="col-sm-6">
+                                    <a href="/message/{{ group.id }}">
+                                        <article class="statistic-box green">
+                                            <div>
+                                                <div class="number">{{ group.nom }}</div>
+                                            </div>
+                                        </article>
+                                    </a>
+                                </div><!--.col-->
                             {% endfor %}
                         </div><!--.row-->
                     </div><!--.col-->
