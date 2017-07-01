@@ -29,17 +29,16 @@ class AdherentType extends AbstractType
             ->add('departement')
             ->add('email')
             ->add('telephone')
-            ->add('groupe', EntityType::class, array(
-                'class' => 'UserBundle:Groupe',
-                'choice_label' => 'nom',
-                'multiple' => true, ))
             ->add('niveau', ChoiceType::class, array(
                 'choices'  => array(
                     'Enfant' => 'Enfant',
                     'Adulte' => 'Adulte',
                     'AquaGym' => 'AquaGym',
-                ),
-            ))
+                )))
+            ->add('groupe', EntityType::class, array(
+                'class' => 'UserBundle:Groupe',
+                'choice_label' => 'nom',
+                'multiple' => true, ))
             ->add('save', SubmitType::class, array('label' => 'Envoyer'));
     }
     
