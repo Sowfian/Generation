@@ -58,8 +58,10 @@ class GroupeController extends Controller
     public function showAction(Groupe $groupe)
     {
         $deleteForm = $this->createDeleteForm($groupe);
+        $adherents = $groupe->getAdherents()->getValues();
 
         return $this->render('groupe/show.html.twig', array(
+            'adherents' => $adherents,
             'groupe' => $groupe,
             'delete_form' => $deleteForm->createView(),
         ));

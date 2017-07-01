@@ -62,6 +62,11 @@ class Adherent
      */
     private $groupe;
 
+    /**
+     * @var string
+     */
+    private $niveau;
+
 
 
     /**
@@ -337,5 +342,21 @@ class Adherent
     public function removeGroupe(\UserBundle\Entity\Groupe $groupe)
     {
         $this->groupe->removeElement($groupe);
+    }
+
+    /**
+     * @return string
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * @param string $niveau
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
     }
 }

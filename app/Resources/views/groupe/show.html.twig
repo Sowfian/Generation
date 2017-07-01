@@ -16,7 +16,49 @@
                         </div>
                         <br>
                         <div class="profile-card-name">Identifiant: <b>{{ groupe.id }}</b></div>
-                        <div class="profile-card-status">Nom: <b>{{ groupe.nom }}</b></div>
+                        <div class="profile-card-status">Nom: <b>{{ groupe.nom }}</b></div></br>
+                        <div class="profile-card-status"><h3>Liste des adhérants à ce groupe:</h3></div>
+                        <div>
+                            <table id="table-edit" class="table table-bordered table-hover" style="width: 90%; text-align: center; margin: 0 auto">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center">Nom</th>
+                                    <th style="text-align: center">Prénom</th>
+                                    <th style="text-align: center">Ville</th>
+                                    <th style="text-align: center">Email</th>
+                                    <th style="text-align: center">Téléphone</th>
+                                    <th style="text-align: center">Niveau</th>
+                                    <th style="text-align: center">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for adherent in adherents %}
+                                    <tr style="text-align: center">
+                                        <td>{{ adherent.nom }}</td>
+                                        <td>{{ adherent.prenom }}</td>
+                                        <td>{{ adherent.ville }}</td>
+                                        <td><a href="mailto:{{ adherent.email }}">{{ adherent.email }}</a></td>
+                                        <td><a href="tel:{{ adherent.telephone }}">{{ adherent.telephone }}</a></td>
+                                        <td>{{ adherent.niveau }}</td>
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                <div class="btn-group btn-group-sm" style="float: none;">
+                                                    <a href="{{ path('adherent_show', { 'id': adherent.id }) }}">
+                                                        <button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;">
+                                                            <span class="glyphicon glyphicon-arrow-right"></span>
+                                                        </button>
+                                                    </a>
+                                                    <a href="{{ path('adherent_edit', { 'id': adherent.id }) }}">
+                                                        <button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;">
+                                                            <span class="glyphicon glyphicon-pencil"></span>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                         {{ form_start(delete_form) }}
                         <a href="{{ path('groupe_edit', { 'id': groupe.id }) }}">
                             <button type="button" class="btn" style="float: none;margin-top: 10px;">
