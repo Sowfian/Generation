@@ -19,10 +19,12 @@
             <thead>
             <tr>
                 <th style="text-align: center">Nom</th>
-                <th style="text-align: center">Code postal</th>
+                <th style="text-align: center">Prénom</th>
                 <th style="text-align: center">Ville</th>
+                <th style="text-align: center">Code postal</th>
                 <th style="text-align: center">Email</th>
                 <th style="text-align: center">Téléphone</th>
+                <th style="text-align: center">Niveau</th>
                 <th style="text-align: center">Actions</th>
             </tr>
             </thead>
@@ -30,10 +32,12 @@
             {% for adherent in adherents %}
             <tr style="text-align: center">
                 <td>{{ adherent.nom }}</td>
-                <td>{{ adherent.codePostal }}</td>
+                <td>{{ adherent.prenom }}</td>
                 <td>{{ adherent.ville }}</td>
+                <td>{{ adherent.codePostal }}</td>
                 <td><a href="mailto:{{ adherent.email }}">{{ adherent.email }}</a></td>
                 <td><a href="tel:{{ adherent.telephone }}">{{ adherent.telephone }}</a></td>
+                <td>{{ adherent.niveau }}</td>
                 <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
                         <div class="btn-group btn-group-sm" style="float: none;">
                             <a href="{{ path('adherent_show', { 'id': adherent.id }) }}">

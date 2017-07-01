@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 
 class AdherentType extends AbstractType
@@ -27,11 +29,17 @@ class AdherentType extends AbstractType
             ->add('departement')
             ->add('email')
             ->add('telephone')
+            ->add('niveau', ChoiceType::class, array(
+                'choices'  => array(
+                    'Enfant' => 'Enfant',
+                    'Adulte' => 'Adulte',
+                    'AquaGym' => 'AquaGym',
+                )))
             ->add('groupe', EntityType::class, array(
                 'class' => 'UserBundle:Groupe',
                 'choice_label' => 'nom',
                 'multiple' => true, ))
-            ->add('save', SubmitType::class, array('label' => 'Créer'));
+            ->add('save', SubmitType::class, array('label' => 'Envoyer'));
     }
     
     /**

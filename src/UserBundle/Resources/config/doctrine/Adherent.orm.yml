@@ -35,15 +35,18 @@ UserBundle\Entity\Adherent:
         telephone:
             type: string
             length: 255
+        niveau:
+            type: string
+            length: 255
 
     manyToMany:
-            groupe:
-                targetEntity: Groupe
-                inversedBy: adherents
-                joinColumn:
-                    name: groupe_id
-                    referencedColumnName: id
-                inverseJoinColumns:
-                    name: adherent_id
-                    referencedColumnName: id
+        groupe:
+            targetEntity: Groupe
+            inversedBy: adherents
+            joinColumn:
+                name: groupe_id
+                referencedColumnName: id
+            inverseJoinColumns:
+                name: adherent_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
