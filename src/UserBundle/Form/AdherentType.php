@@ -9,8 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AdherentType extends AbstractType
 {
@@ -20,15 +19,15 @@ class AdherentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('dateNaissance', BirthdayType::class)
-            ->add('adresse')
-            ->add('codePostal')
-            ->add('ville')
-            ->add('departement')
-            ->add('email')
-            ->add('telephone')
+            ->add('nom', TextType::class, array('required' => false))
+            ->add('prenom', TextType::class, array('required' => false))
+            ->add('dateNaissance', BirthdayType::class, array('required' => false))
+            ->add('adresse', TextType::class, array('required' => false))
+            ->add('codePostal', TextType::class, array('required' => false))
+            ->add('ville', TextType::class, array('required' => false))
+            ->add('departement', TextType::class, array('required' => false))
+            ->add('email', TextType::class, array('required' => false))
+            ->add('telephone', TextType::class, array('required' => false))
             ->add('niveau', ChoiceType::class, array(
                 'choices'  => array(
                     'Enfant' => 'Enfant',

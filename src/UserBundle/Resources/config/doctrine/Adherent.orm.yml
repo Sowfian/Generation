@@ -12,29 +12,38 @@ UserBundle\Entity\Adherent:
         nom:
             type: string
             length: 255
+            nullable: true
         prenom:
             type: string
             length: 255
+            nullable: true
         dateNaissance:
             type: date
             column: date_naissance
+            nullable: true
         adresse:
             type: text
+            nullable: true
         codePostal:
             type: integer
             column: code_postal
+            nullable: true
         ville:
             type: string
             length: 255
+            nullable: true
         departement:
             type: string
             length: 255
+            nullable: true
         email:
             type: string
             length: 255
+            nullable: true
         telephone:
             type: string
             length: 255
+            nullable: true
         niveau:
             type: string
             length: 255
