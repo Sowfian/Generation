@@ -21,7 +21,7 @@ class AdherentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $adherents = $em->getRepository('UserBundle:Adherent')->findAll();
+        $adherents = $em->getRepository('UserBundle:Adherent')->findBy(array(), array('nom' => 'ASC'));
         return $this->render('adherent/index.html.twig', array(
             'adherents' => $adherents,
         ));
