@@ -6,6 +6,10 @@ user_homepage:
     path:     /
     defaults: { _controller: UserBundle:Dashboard:index }
 
+user_tools:
+        resource: "@UserBundle/Resources/config/routing/tools.yml"
+        prefix:   /tools
+
 user_groupe:
         resource: "@UserBundle/Resources/config/routing/groupe.yml"
         prefix:   /groupe

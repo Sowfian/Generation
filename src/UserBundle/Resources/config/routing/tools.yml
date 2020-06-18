@@ -1,0 +1,9 @@
+tools_export:
+    path:     /export
+    defaults: { _controller: "UserBundle:Tools:export" }
+    methods:  GET
+
+tools_delete:
+    path:     /delete
+    defaults: { _controller: "UserBundle:Tools:delete" }
+    methods:  GET
