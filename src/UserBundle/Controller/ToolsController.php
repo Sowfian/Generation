@@ -3,48 +3,62 @@
 namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use UserBundle\Entity\Adherent;
+use UserBundle\Entity\Groupe;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class ToolsController extends Controller
 {
     public function exportAction()
     {
-        $adherents = $em->getRepository('UserBundle:Adherent');
+
+        $results = $this->getDoctrine()->getManager()->getRepository('UserBundle:Adherent')->findAll();
 
         $response = new StreamedResponse();
-        $response->setCallback(function() use ($adherents) {
-            $handle = fopen('php://output', 'w+');
 
-            fputcsv($handle, ['Nom', 'Prénom', 'Date de naissance', 'Adresse', 'Code postal', 'Ville', 'Département', 'Email', 'Téléphone', 'Niveau', 'Groupe'], ';');
+        $response->setCallback(
+            function () use ($results) {
+                $handle = fopen('php://output', 'r+');
+                foreach ($results as $row) {
 
-            $results = $adherents->findAll();
-            foreach ($results as $adherent) {
-                fputcsv(
-                    $handle,
-                    [$adherent->getNom(), $adherent->getPrenom(), $adherent->getDateNaissance(), $adherent->getAdresse(), $adherent->getCodePostal(), $adherent->getVille(), $adherent->getDepartement(), $adherent->getEmail(), $adherent->getTelephone(), $adherent->getNiveau(), $adherent->getGroupe()->getNom()],
-                    ';'
-                );
+                    //array list fields you need to export
+                    $data = array(
+                    	$row->getId(),
+                        $row->getNom(),
+                        $row->getPrenom(),
+                        $row->getAdresse(),
+                        $row->getCodePostal(),
+                        $row->getVille(),
+                        $row->getDepartement(),
+                        $row->getEmail(),
+                        $row->getTelephone(),
+                    );
+                    fputcsv($handle, $data);
+                }
+                fclose($handle);
             }
-
-            var_dump($handle);die;
-
-            fclose($handle);
-        });
-
-        $response->setStatusCode(200);
-        $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
-        $response->headers->set('Content-Disposition','attachment; filename="export-adherents.csv"');
+        );
+        $response->headers->set('Content-Type', 'application/force-download');
+        $response->headers->set('Content-Disposition', 'attachment; filename="export.csv"');
 
         return $response;
-
+    
     }
+
 
     public function deleteAction()
     {
-        $adherents = $em->getRepository('UserBundle:Adherent')->findAll();
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($adherents);
-        $em->flush();
+        $adherents = $this->getDoctrine()->getManager()->getRepository('UserBundle:Adherent')->findAll();
+
+		foreach ($adherents as $adherent) {
+		    $em->remove($adherent);
+		}
+
+		$em->flush();
 
         return $this->redirectToRoute('user_homepage');
     }
