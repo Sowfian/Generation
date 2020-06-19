@@ -55,10 +55,10 @@ class ToolsController extends Controller
         $adherents = $this->getDoctrine()->getManager()->getRepository('UserBundle:Adherent')->findAll();
 
 		foreach ($adherents as $adherent) {
-		    $em->remove($adherent);
+		    $this->getDoctrine()->getManager()->remove($adherent);
 		}
 
-		$em->flush();
+		$this->getDoctrine()->getManager()->flush();
 
         return $this->redirectToRoute('user_homepage');
     }
